@@ -1,10 +1,14 @@
 package com.BU.FileUpload.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,7 +20,10 @@ public class Student {
     private int id;
     private String name;
     private String Address;
-    private Date dob;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate dob;
     private String profileImage;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Parent> parents;
 }

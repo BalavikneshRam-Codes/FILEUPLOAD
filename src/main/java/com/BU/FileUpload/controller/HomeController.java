@@ -25,6 +25,7 @@ public class HomeController {
     @Autowired
     private StudentService studentService;
     private static String uploadDirectory = Paths.get(System.getProperty("user.dir"), "src", "main", "webapp", "images").toString();
+
     @PostMapping("/saveData")
     public Student saveStudent(@ModelAttribute Student student, @RequestParam("file")MultipartFile multipartFile) throws IOException {
         File directory = new File(uploadDirectory);
